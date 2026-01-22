@@ -1,0 +1,55 @@
+<div class="list-container" dir="rtl">
+  
+  <div class="row mb-5 align-items-center">
+    <div class="col-md-7">
+      <h2 class="section-title">إصدارات المكتبة</h2>
+    </div>
+    
+    <div class="col-md-5">
+      <div class="search-box">
+        <input type="text" 
+               [(ngModel)]="searchTerm" 
+               (input)="filterBooks()" 
+               placeholder="ابحث في العناوين، التصنيفات، أو الوصف...">
+        <span class="icon">🔍</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let book of filteredBooks">
+      <div class="book-card-ksaa">
+        
+        <div class="book-img">
+          <img [src]="baseUrl + book.image" alt="غلاف الكتاب">
+          <div class="badge-cat">{{ book.category }}</div>
+        </div>
+
+        <div class="book-info">
+          <h5>{{ book.name }}</h5>
+          <span class="book-type">{{ book.type }}</span>
+          <p>{{ book.description | slice:0:70 }}...</p>
+        </div>
+
+        <div class="book-footer">
+          <div class="footer-actions">
+            
+            <a [routerLink]="['/edit-book', book._id]" class="btn-control edit-link">
+              <span>✏️</span> تعديل
+            </a>
+
+            <button (click)="deleteBook(book._id!)" class="btn-control delete-btn">
+              <span>🗑️</span> حذف
+            </button>
+
+          </div>
+          <span class="date">{{ book.createdAt | date:'yyyy/MM/dd' }}</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-12 text-center py-5" *ngIf="filteredBooks.length === 0 && !loading">
+      <p class="text-muted">عذراً، لم يتم العثور على نتائج تطابق: "{{searchTerm}}"</p>
+    </div>
+  </div>
+</div>

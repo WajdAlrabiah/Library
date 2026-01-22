@@ -1,0 +1,66 @@
+/* books-frontend/src/app/app.component.css */
+
+/**
+ * اسم الملف: navbar.component.css
+ * الوصف: يحتوي على تنسيقات شريط التنقل العلوي، مع التركيز على إبراز 
+ * هوية المجمع البصرية واستخدام الخطوط العريضة والتأثيرات التفاعلية للأزرار.
+ */
+
+/* الحاوية الأساسية لشريط التنقل */
+.ksaa-nav {
+  background: var(--ksaa-white);
+  padding: 1.2rem 0;
+  /* إضافة ظل ناعم لإعطاء عمق وتأثير عائم للشريط */
+  box-shadow: 0 4px 20px rgba(15, 28, 61, 0.08);
+  /* خط سفلي بلون المجمع الفيروزي لتمييز الهوية */
+  border-bottom: 4px solid var(--ksaa-secondary);
+}
+
+/* تنسيق شعار المجمع (Logo) */
+.nav-logo {
+  font-size: 1.4rem;
+  color: var(--ksaa-primary); /* اللون الكحلي الأساسي */
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* تلوين الجزء الفرعي من الشعار باللون الفيروزي */
+.nav-logo b { 
+  color: var(--ksaa-secondary); 
+}
+
+/* حاوية روابط القائمة */
+.nav-links { 
+  display: flex; 
+  gap: 25px; 
+  align-items: center; 
+}
+
+/* التنسيق العام لروابط التنقل */
+.nav-links a {
+  text-decoration: none;
+  color: var(--ksaa-primary);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+/* تمييز الرابط النشط (الصفحة الحالية التي يتواجد فيها المستخدم) */
+.active-link { 
+  color: var(--ksaa-secondary) !important; 
+  font-weight: 700 !important; 
+}
+
+/* زر الإجراء الرئيسي (مثل "إضافة كتاب جديد") */
+.btn-ksaa-action {
+  background: var(--ksaa-primary);
+  color: white !important;
+  padding: 8px 22px;
+  border-radius: 50px; /* تصميم كبسولي (Pill-shaped) */
+  transition: 0.3s;
+}
+
+/* تأثيرات الزر عند مرور الفأرة: تغيير اللون والارتفاع للأعلى */
+.btn-ksaa-action:hover { 
+  background: var(--ksaa-secondary); 
+  transform: translateY(-2px); 
+}

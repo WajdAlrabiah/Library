@@ -1,0 +1,86 @@
+<div class="ksaa-form-card">
+  <div class="form-header">
+    <h3>تسجيل مؤلَّف جديد</h3>
+    <p>أدخل بيانات الكتاب بدقة لضمان فهرستها في المكتبة</p>
+  </div>
+  
+  <div class="form-body">
+    <div *ngIf="successMessage" class="ksaa-alert success animate__animated animate__fadeIn">
+      <i class="fas fa-check-circle"></i> {{ successMessage }}
+    </div>
+
+    <div *ngIf="submitted && (bookForm.invalid || !selectedFile)" class="ksaa-alert error animate__animated animate__shakeX">
+      <i class="fas fa-exclamation-triangle"></i> هناك خلل في بعض الخانات، يرجى التأكد من تعبئة البيانات بشكل صحيح.
+    </div>
+    
+    <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        
+        <div class="col-md-12 mb-4">
+          <label class="ksaa-label">عنوان الكتاب <span class="required">*</span></label>
+          <input type="text" formControlName="name" 
+                 class="ksaa-input" [class.input-error]="submitted && f['name'].errors"
+                 placeholder="مثال: لسان العرب">
+          <div *ngIf="submitted && f['name'].errors" class="field-error">
+            <small *ngIf="f['name'].errors['required']">عنوان الكتاب حقل إلزامي.</small>
+            <small *ngIf="f['name'].errors['minlength']">يجب أن يتكون العنوان من 3 أحرف على الأقل.</small>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+          <label class="ksaa-label">التصنيف اللغوي <span class="required">*</span></label>
+          <select formControlName="category" class="ksaa-input" [class.input-error]="submitted && f['category'].errors">
+            <option value="">اختر التصنيف...</option>
+            <option *ngFor="let cat of categories" [value]="cat">{{cat}}</option>
+          </select>
+          <div *ngIf="submitted && f['category'].errors" class="field-error">
+            <small>يرجى اختيار تصنيف الكتاب.</small>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+          <label class="ksaa-label">نوع الكتاب <span class="required">*</span></label>
+          <div class="ksaa-radio-group" [class.group-error]="submitted && f['type'].errors">
+            <div *ngFor="let t of types" class="radio-option">
+              <input type="radio" [id]="t" [value]="t" formControlName="type">
+              <label [for]="t">{{ t }}</label>
+            </div>
+          </div>
+          <div *ngIf="submitted && f['type'].errors" class="field-error">
+            <small>يرجى تحديد نوع الكتاب.</small>
+          </div>
+        </div>
+
+        <div class="col-md-12 mb-4">
+          <label class="ksaa-label">نبذة عن الكتاب <span class="required">*</span></label>
+          <textarea formControlName="description" class="ksaa-input" rows="3"
+                    [class.input-error]="submitted && f['description'].errors"
+                    placeholder="اكتب وصفاً موجزاً عن محتوى الكتاب..."></textarea>
+          <div *ngIf="submitted && f['description'].errors" class="field-error">
+            <small *ngIf="f['description'].errors['required']">نبذة الكتاب مطلوبة.</small>
+            <small *ngIf="f['description'].errors['minlength']">يجب ألا يقل الوصف عن 10 أحرف.</small>
+          </div>
+        </div>
+
+        <div class="col-md-12 mb-4">
+          <label class="ksaa-label">صورة الغلاف <span class="required">*</span></label>
+          <input type="file" (change)="onFileSelected($event)" 
+                 class="form-control ksaa-file" [class.is-invalid]="submitted && !selectedFile">
+          <div *ngIf="submitted && !selectedFile" class="field-error">
+            <small>يرجى رفع صورة لغلاف الكتاب.</small>
+          </div>
+          
+          <div *ngIf="imagePreview" class="preview-box">
+            <p class="preview-text">معاينة الغلاف:</p>
+            <img [src]="imagePreview" alt="معاينة الصورة المرفوعة">
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="loading" class="ksaa-submit-btn">
+        <span *ngIf="!loading">اعتماد الحفظ</span>
+        <span *ngIf="loading">جاري المعالجة...</span>
+      </button>
+    </form>
+  </div>
+</div>

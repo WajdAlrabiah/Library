@@ -1,0 +1,40 @@
+/* books-frontend/src/styles.css */
+
+/**
+ * اسم الملف: styles.css
+ * الوصف: ملف التنسيق الرئيسي للتطبيق. يحتوي على المتغيرات اللونية (CSS Variables)،
+ * إعدادات الخطوط العربية، والتنسيقات المشتركة التي تُطبق على جميع المكونات.
+ */
+
+/* استيراد خط "تجوال" (Tajawal) لضمان مظهر احترافي وعصري للنصوص العربية */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap');
+
+:root {
+  /* تعريف لوحة الألوان الخاصة بالمجمع (KSAA Palette) لسهولة الاستخدام في كامل المشروع */
+  --ksaa-primary: #0f1c3d;    /* اللون الكحلي الداكن: للوقار والجدية */
+  --ksaa-secondary: #00b4d8;  /* اللون الفيروزي: للحيوية والعصرية */
+  --ksaa-bg: #f4f7f9;         /* اللون الرمادي الفاتح: خلفية مريحة للعين */
+  --ksaa-white: #ffffff;
+}
+
+body {
+  font-family: 'Tajawal', sans-serif;
+  background-color: var(--ksaa-bg);
+  direction: rtl; /* ضبط اتجاه الصفحة بالكامل من اليمين إلى اليسار */
+  margin: 0;
+  color: var(--ksaa-primary);
+  line-height: 1.6; /* تحسين المسافات بين الأسطر لراحة القراءة */
+}
+
+/* تحسين حاوية المحتوى لتكون متناسقة في المنتصف مع عرض مريح */
+.container { 
+  max-width: 1100px; 
+}
+
+/* تصميم موحد ومنمق للتنبيهات (Alerts) يتناسب مع واجهة المستخدم العصرية */
+.alert {
+  border-radius: 12px;
+  border: none;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* ظل خفيف لإبراز التنبيه عن الخلفية */
+}

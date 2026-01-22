@@ -1,0 +1,120 @@
+/* books-frontend/src/app/components/book-form/book-form.component.css */
+
+
+/**
+ * اسم الملف: styles.css (أو ملف التنسيق الخاص بالمكون)
+ * الوصف: يحتوي على التصميمات العصرية لنماذج الإدخال (Forms)، التنبيهات، 
+ * ومعاينة الصور، مع الالتزام بالهوية البصرية للمجمع (الأزرق والسيان).
+ */
+
+/* الحاوية الأساسية للنموذج: تعتمد تصميم البطاقة المرتفعة مع ظلال ناعمة */
+.ksaa-form-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 45px rgba(0,0,0,0.05);
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+/* الجزء العلوي للنموذج (Header): يستخدم اللون الكحلي الخاص بالمجمع */
+.form-header {
+  background: var(--ksaa-primary);
+  color: white;
+  padding: 35px;
+  text-align: center;
+}
+
+.form-header h3 { font-weight: 800; margin-bottom: 10px; }
+
+/* جسم النموذج */
+.form-body { padding: 40px; }
+
+/* صناديق الرسائل والإعلامات (Alerts): للرسائل النجاح أو الخطأ */
+.ksaa-alert {
+  padding: 15px 20px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  font-weight: 600;
+  border-right: 5px solid; /* شريط جانبي بلون الحالة لتعزيز الوضوح */
+}
+.ksaa-alert.success { background: #f0fff4; border-color: #38a169; color: #276749; }
+.ksaa-alert.error { background: #fff5f5; border-color: #e53e3e; color: #9b2c2c; }
+
+/* عناوين الحقول والمدخلات */
+.ksaa-label { font-weight: 600; margin-bottom: 10px; display: block; color: var(--ksaa-primary); }
+.required { color: #e53e3e; margin-right: 4px; } /* علامة النجمة للحقول المطلوبة */
+
+.ksaa-input {
+  width: 100%;
+  padding: 12px 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #f8fafc;
+  transition: all 0.3s;
+}
+.ksaa-input:focus { outline: none; border-color: var(--ksaa-secondary); background: white; }
+
+/* تنسيق الحقول عند وجود خطأ في التحقق (Validation) */
+.input-error {
+  border-color: #feb2b2 !important;
+  background-color: #fffafb !important;
+}
+.field-error { color: #e53e3e; margin-top: 6px; font-weight: 500; display: block; font-size: 0.85rem; }
+
+/* خيارات الراديو (Radio Buttons): مصممة بشكل مجموعات منتظمة */
+.ksaa-radio-group { display: flex; gap: 25px; padding: 12px; background: #f1f5f9; border-radius: 12px; }
+.group-error { border: 1px solid #feb2b2; }
+.radio-option { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+
+/* زر الحفظ (Submit): يستخدم اللون الفيروزي مع تأثير التحريك عند التمرير */
+.ksaa-submit-btn {
+  width: 100%;
+  padding: 14px;
+  background: var(--ksaa-secondary);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.ksaa-submit-btn:hover:not(:disabled) { background: var(--ksaa-primary); transform: translateY(-2px); }
+.ksaa-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* منطقة معاينة الصورة قبل الرفع */
+.preview-box { margin-top: 20px; padding: 15px; background: #f8fafc; border-radius: 12px; text-align: center; }
+.preview-text { font-size: 0.8rem; color: #64748b; margin-bottom: 10px; }
+.preview-box img { max-height: 200px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+
+/* --- أزرار التحكم في قائمة الكتب (Delete & Edit) --- */
+.footer-actions {
+  display: flex;
+  gap: 15px; 
+}
+
+.delete-link, .edit-link {
+  background: none;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  padding: 0;
+}
+
+.delete-link { color: #e53e3e; } /* اللون الأحمر للحذف */
+.delete-link:hover { color: #c53030; }
+
+.edit-link { color: var(--ksaa-secondary); } /* اللون الفيروزي للتعديل */
+.edit-link:hover { opacity: 0.7; }
+
+/* تذييل بطاقة الكتاب: تنظيم العناصر بشكل متباعد */
+.book-footer {
+  padding: 15px 20px;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

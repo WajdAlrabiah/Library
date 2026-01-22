@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  # 1. قاعدة البيانات
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  # 2. الباك أند
+  backend:
+    build: ./books-backend # مسار مجلد الباك أند
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/books-db
+    depends_on:
+      - mongodb
+    volumes:
+      - ./books-backend/uploads:/app/uploads # للحفاظ على الصور
+
+  # 3. الفرنت أند
+  frontend:
+    build: ./books-frontend # مسار مجلد الأنجلر
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  mongo-data:
